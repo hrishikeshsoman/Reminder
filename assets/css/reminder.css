@@ -1,0 +1,71 @@
+body
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.fixedHeader
+{
+	position: fixed;
+	width :100%;
+	top :0px;
+	left: 0px;
+	height :70px;
+    background-color: #CE6F6F;
+    text-align: center;
+    z-index: 5;
+}
+.navBar
+{
+	position: absolute;
+	left: 0px;
+	top: 70px;
+	height: 626px;
+	width: 200px;
+	background-color: #9B9B9B;
+}
+div ul li
+{
+	padding: 5px;
+	padding-bottom: 10px;
+	list-style-type: none;
+	color: #2A2872;
+	font-size: 20px;
+	font-weight: 700;
+}
+.containerDiv
+{
+	position: absolute;
+	left: 200px;
+	top: 70px;
+	background-color: #6863E8;
+	width: 1166px;
+	height: 626px;
+	z-index: 0;
+
+}
+.contentDiv
+{
+	position: absolute;
+	height: 50px;
+	width: 1146px;
+	background-color: #0A0758;
+	margin: 10px;
+}
+.buttonDiv
+{
+	position: absolute;
+	background-color: #FF1414;
+	margin:10px;
+	height: 30px;
+	width: 30px;
+}
+.textContainer
+{
+	position: absolute;
+	margin: 10px;
+	left : 50px;
+    height: 30px;
+    width: 600px;
+    background-color: #07540C;
+}
