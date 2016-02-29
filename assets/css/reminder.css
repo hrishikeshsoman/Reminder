@@ -46,11 +46,12 @@ div ul li
 }
 .contentDiv
 {
-	position: absolute;
+	position: relative;
 	height: 50px;
 	width: 1146px;
 	background-color: #0A0758;
 	margin: 10px;
+    z-index: 100;
 }
 .buttonDiv
 {
@@ -68,4 +69,20 @@ div ul li
     height: 30px;
     width: 600px;
     background-color: #07540C;
+}
+.textField
+{
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 600px;
+    height: 25px;
+}
+.removeButton
+{
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    height: 30px;
+	width: 30px;
 }
