@@ -9,8 +9,8 @@ window.onload=function(){
     }
     while(index < remArray.length)
     {
-
-       var contentDiv = document.createElement('Div');
+        if(remArray[index]["complete"]!="true"){
+            var contentDiv = document.createElement('Div');
             contentDiv.id = "content";
             contentDiv.className = "contentDiv";
 
@@ -35,13 +35,17 @@ window.onload=function(){
             textField.setAttribute("value",remArray[index]["text"]);
             textDiv.appendChild(textField);
             
-            index++;
+          
 
             var button = document.createElement('Button');
-            button.id = "button";
+            button.id = "button1";
             button.innerText = "-";
+            button.setAttribute("onclick","remove1(this)");
+            buttonDiv.appendChild(button);
             document.getElementById('container').appendChild(contentDiv);
             textField.focus();
+        }
+         index++;
         //     var ele = document.createElement("div");
         //     var containerDiv = document.createElement("div");
         //         containerDiv.setAttribute("class","containerDiv");
@@ -75,6 +79,7 @@ function add(event)
             var buttonDiv = document.createElement('Div');
             buttonDiv.id = "button";
             buttonDiv.className = "buttonDiv";
+            // textField.setAttribute("onclick","remove(this)");
             contentDiv.appendChild(buttonDiv);
 
             var textDiv = document.createElement('Div');
@@ -95,14 +100,22 @@ function add(event)
             index++;
 
             var button = document.createElement('Button');
-            button.id = "button";
+            button.id = "button1";
             button.innerText = "-";
+             button.setAttribute("onclick","remove1(this)");
+            buttonDiv.appendChild(button);
             document.getElementById('container').appendChild(contentDiv);
             textField.focus();
           }
 
 }
-  
+function remove1(element){
+var text = element.parentNode.nextSibling.children;
+remArray[text[0].id]["complete"]= "true";
+ var myJsonString = JSON.stringify(remArray);
+            localStorage.setItem('reminder', myJsonString);
+element.parentNode.parentNode.parentNode.removeChild(element.parentNode.parentNode);
+}
 // function addold(event){
 //         if(event.id=="add"||event.keyCode == 13) {
 //             var ele = document.createElement("div");
@@ -149,17 +162,24 @@ function add(event)
 // }
 
 function save(currentRem) {
-            var text = currentRem.value;
-            var priority = "high";
-            var note = "";
-            var reminder = {}; 
-                reminder["text"] = text; 
-                reminder["priority"] = priority; 
-                reminder["note"] = note;
-            remArray[currentRem.id] = reminder;
-            // alert("hi"+ currentRem.value);
-            var myJsonString = JSON.stringify(remArray);
-            localStorage.setItem('reminder', myJsonString);
-            var str = localStorage.getItem('reminder');
-            var pars = JSON.parse(str);
+            if(remArray[currentRem.id]["text"]!=currentRem.value){
+              var text = currentRem.value;
+              var priority = "high";
+              var note = "";
+              var reminder = {}; 
+                  reminder["text"] = text; 
+                  reminder["priority"] = priority; 
+                  reminder["note"] = note;    
+
+                  // if(reminder["complete"] === 'undefined'){
+                  //   reminder["complete"]="false";
+                  // }
+              remArray[currentRem.id] = reminder;
+              // alert("hi"+ currentRem.value);
+              var myJsonString = JSON.stringify(remArray);
+              localStorage.setItem('reminder', myJsonString);
+              var str = localStorage.getItem('reminder');
+              var pars = JSON.parse(str);
+            }
+            
 }
